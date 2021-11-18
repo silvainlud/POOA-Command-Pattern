@@ -52,4 +52,8 @@ La classe qui appelle l’invoqueur, elle doit préalablement connaître le rece
 ### `SqlClient.java` _(Client)_
 ![](images/SqlClient.png)
 
+## Sources
 
+- ["Command Pattern – Design Patterns (ep 7)" de Christopher Okhravi](https://www.youtube.com/watch?v=9qA5kw8dcSU)
+- [Wikipedia Command pattern](https://en.wikipedia.org/wiki/Command_pattern)
+- ["Design Patterns en Java - Les 23 modèles de conception (4e édition)" de l'édition ENI](https://www.editions-eni.fr/livre/design-patterns-en-java-les-23-modeles-de-conception-descriptions-et-solutions-illustrees-en-uml-2-et-java-4e-edition-9782409012815)
