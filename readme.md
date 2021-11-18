@@ -1,6 +1,6 @@
 ## Simon HEBAN & Ludwig SILVAIN- M1 WedSci
 
-# Programmation orienté objet Avancée (M1) : Command Pattern
+# Programmation orientée objet Avancée (M1) : Command Pattern
 
 ## Introduction
 
