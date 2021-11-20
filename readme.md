@@ -17,7 +17,7 @@ Le plus grand avantage de ce patron est de pouvoir encapsuler la commande permet
 
 Ce diagramme est composé de trois classes et une interface.
 - Invoker:
-L’invoker sera la classe qui invoquera la commande, pour ce fait elle aura besoin de connaître au préalable la cible (le receiver). Cette classe pourra avoir une propriété de type file permettant d’exécuter une multitude de commandes. Elle pourra aussi avoir une pile permettant de garder un historique des commandes faites. On pourra ainsi exécuter les commandes dans la file, ou bien annuler les commandes dans la pile.
+L’invoker sera la classe qui invoquera la commande, pour ce fait elle aura besoin de connaître au préalable la cible (le receiver). Cette classe pourra avoir une propriété de type file contenant les commandes qui ne sont pas encore exécutés. Elle pourra aussi avoir une pile permettant de garder un historique des commandes faites. On pourra ainsi exécuter les commandes dans la file, ou bien annuler les commandes dans la pile.
 ICommand:
 L’interface “ICommand” qui permet de généraliser les commandes, on pourra avoir plusieurs types de commandes.
 
