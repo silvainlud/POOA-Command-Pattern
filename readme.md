@@ -4,12 +4,17 @@
 
 ## Introduction
 
-Le design pattern Command fait partie de la catégorie des patterns de comportements. Il permet d’encapsuler les commandes afin de garder un historique et de revenir à une version antérieure. Cette encapsulation comporte deux méthodes, “execute” et “unexecute”, la première permettant d'exécuter la commande souhaitée et la deuxième permettant de revenir en arrière (rollback).
+Le design pattern Command fait partie de la catégorie des patterns de comportements. Il permet d’encapsuler les commandes afin de garder un historique et de revenir à une version antérieure. Cette encapsulation permet de réaliser deux actions
+- la première permettant d'exécuter la ou les commandes souhaitées
+- la deuxième permettant de revenir en arrière (rollback).
 
-Ce design pattern répond donc à un problème de sauvegarde de données lors de modifications délicates, telles que les transactions SQL: si une transaction échoue toutes les requêtes faites depuis le début sont annulées (rollback). On peut aussi retrouver l’utilité de ce patron dans les historiques de logiciels, par exemple Photoshop qui permet de revenir en arrière.
+Ce design pattern peut donc répond à un problème de sauvegarde de données lors de modifications délicates, telles que dans une base de données : si une instruction (par exemple on modifie des données) échoue toutes les instructions faites depuis le début sont annulées (rollback).
+On peut aussi retrouver l’utilité de ce patron dans les historiques de logiciels, par exemple Photoshop qui permet de revenir en arrière.
 
-La mise en œuvre reste assez simple. Une classe dit invoqueur (Invoker) qui exécutera la commande, une interface qui représente de façon générale les commandes (ICommand) ensuite une classe qui implémente cette interface (Command), avec dans son constructeur l’objet ciblé nommé receveur (receiver).
-Le plus grand avantage de ce patron est de pouvoir encapsuler la commande permettant par la suite d’avoir un historique et une sauvegarde des différents états. Le plus grand problème de ce design pattern est la lisibilité, en effet plus on a de commandes plus on aura de fichiers, d’associations, le code va augmenter assez rapidement.
+Sa mise en œuvre reste assez simple (voir le diagramme avec explication ci-dessous).
+Le plus grand avantage de ce patron est de pouvoir encapsuler la commande permettant par la suite d’avoir un historique et une sauvegarde des différents états. 
+Le désavantage de ce design pattern est la lisibilité, en effet plus on a de commandes plus on aura de fichiers. Par conséquent, la quantité de code va augmenter assez rapidement.
+
 
 ## Explication
 
@@ -17,18 +22,22 @@ Le plus grand avantage de ce patron est de pouvoir encapsuler la commande permet
 
 Ce diagramme est composé de trois classes et une interface.
 - Invoker:
-L’invoker sera la classe qui invoquera la commande, pour ce fait elle aura besoin de connaître au préalable la cible (le receiver). Cette classe pourra avoir une propriété de type file contenant les commandes qui ne sont pas encore exécutés. Elle pourra aussi avoir une pile permettant de garder un historique des commandes faites. On pourra ainsi exécuter les commandes dans la file, ou bien annuler les commandes dans la pile.
-ICommand:
-L’interface “ICommand” qui permet de généraliser les commandes, on pourra avoir plusieurs types de commandes.
+L’invoker sera la classe qui invoquera la commande, pour ce fait elle aura besoin de connaître au préalable la cible (le receiver). 
+Cette classe pourra avoir une propriété de type file (FIFO) contenant les commandes qui ne sont pas encore exécutés. 
+Elle pourra aussi avoir une pile (LIFO) permettant de garder un historique des commandes faites. 
+On pourra ainsi exécuter les commandes dans la file, ou bien annuler les commandes dans la pile.
+
+-ICommand:
+L’interface “ICommand” correspond à l'encapsulation des commandes, cela permet de généraliser ces commandes.
 
 - Command:
-Classe qui implémente ICommand, permet d’avoir une multitude de commandes. Elle possède par défaut deux méthodes: “execute” et (“rollback” ou “unexecute”).
+Cette classe implémente ICommand, on peut avoir une multitude de commandes. Elle hérite de deux méthodes : “execute” et “unexecute”.
 
 - Receiver:
-La classe “receiver” et la classe qui recevra la commande. C’est sur cette classe que l’action se passera.
+La classe “receiver” est la classe qui recevra la commande. C’est dans cette classe que l’action se déroulera.
 
 - Client:
-La classe qui appelle l’invoqueur, elle doit préalablement connaître le receveur ainsi que la/les commandes à exécuter.
+Cette classe appelle la classe Invoker, elle doit préalablement connaître le receveur ainsi que la/les commandes à exécuter.
 
 ## Exemple
 
