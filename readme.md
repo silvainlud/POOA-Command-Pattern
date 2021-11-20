@@ -4,7 +4,10 @@
 
 ## Introduction
 
-Le design pattern Command fait partie de la catégorie des patterns de comportements. Il permet d’encapsuler les commandes afin de garder un historique et de revenir à une version antérieure. Cette encapsulation permet de réaliser deux actions
+Le design pattern Command fait partie de la catégorie des patterns de comportements.
+Tout d'abord il faut savoir q'un patron de comportement permet d’identifier les modèles de communications entre les objets.
+
+Le patron de commande permet d’encapsuler les commandes afin de garder un historique et de revenir à une version antérieure. Cette encapsulation permet de réaliser deux actions
 - la première permettant d'exécuter la ou les commandes souhaitées
 - la deuxième permettant de revenir en arrière (rollback).
 
@@ -13,6 +16,7 @@ On peut aussi retrouver l’utilité de ce patron dans les historiques de logici
 
 Sa mise en œuvre reste assez simple (voir le diagramme avec explication ci-dessous).
 Le plus grand avantage de ce patron est de pouvoir encapsuler la commande, permettant par la suite d’avoir un historique des différents états. 
+On peut également facilement ajouter de nouvelles commandes sans que cela entraîne de changements importants. 
 Le désavantage de ce design pattern est la lisibilité, en effet plus on a de commandes plus on aura de fichiers. Par conséquent, la quantité de code va augmenter assez rapidement.
 
 
