@@ -25,23 +25,24 @@ Le désavantage de ce design pattern est la lisibilité, en effet plus on a de c
 ![](images/Schema%20Explication.png)
 
 Ce diagramme est composé de trois classes et une interface.
-- Invoker:
+- `Invoker`:
 L’invoker sera la classe qui invoquera la commande, pour ce fait elle aura besoin de connaître au préalable la cible (le receiver). 
 Cette classe pourra avoir une propriété de type file (FIFO) contenant les commandes qui ne sont pas encore exécutés. 
 Elle pourra aussi avoir une pile (LIFO) permettant de garder un historique des commandes faites. 
 On pourra ainsi exécuter les commandes dans la file, ou bien annuler les commandes dans la pile.
 
-- ICommand:
-L’interface “ICommand” correspond à l'encapsulation des commandes, cela permet de généraliser ces dernières.
+- `ICommand`:
+L’interface `ICommand` correspond à l'encapsulation des commandes, cela permet de généraliser ces dernières.
 
-- Command:
-Cette classe implémente ICommand. Elle hérite de deux méthodes : “execute” et “unexecute”. On pourra imaginer avoir plusieurs commandes.
+- `Command`:
+Cette classe implémente `ICommand`. Elle hérite de deux méthodes : `execute` et `unexecute`. On pourra imaginer avoir plusieurs commandes.
 
-- Receiver:
-La classe “receiver” est la classe qui recevra la ou les commandes. C’est dans cette classe que l’action se déroulera.
+- `Receiver`:
+La classe `Receiver` est la classe qui recevra la ou les commandes. C’est dans cette classe que l’action se déroulera.
 
-- Client:
-Cette classe appelle la classe Invoker. Elle doit préalablement connaître le receveur ainsi que la/les commandes à exécuter.
+- `Client`:
+Cette classe appelle la classe `Invoker`. Elle doit préalablement connaître le receveur ainsi que la/les commandes à exécuter.
+
 
 ## Exemple
 
@@ -50,19 +51,19 @@ Cette classe appelle la classe Invoker. Elle doit préalablement connaître le r
 #### `ISqlRequest.java` _(ICommand)_
 ![](images/ISqlRequest.png)
 
-### `SqlTransaction.java` _(Invoker)_
+#### `SqlTransaction.java` _(Invoker)_
 ![](images/SqlTransaction.png)
 
-### `SqlServer.java` _(Receiver)_
+#### `SqlServer.java` _(Receiver)_
 ![](images/SqlServer.png)
 
-### `DeleteSqlRequest.java` _(Command)_
+#### `DeleteSqlRequest.java` _(Command)_
 ![](images/DeleteSqlRequest.png)
 
-### `UpdateSqlRequest.java` _(Command)_
+#### `UpdateSqlRequest.java` _(Command)_
 ![](images/UpdateSqlRequest.png)
 
-### `SqlClient.java` _(Client)_
+#### `SqlClient.java` _(Client)_
 ![](images/SqlClient.png)
 
 ## Sources
