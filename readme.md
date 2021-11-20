@@ -8,11 +8,11 @@ Le design pattern Command fait partie de la catégorie des patterns de comportem
 - la première permettant d'exécuter la ou les commandes souhaitées
 - la deuxième permettant de revenir en arrière (rollback).
 
-Ce design pattern peut donc répond à un problème de sauvegarde de données lors de modifications délicates, telles que dans une base de données : si une instruction (par exemple on modifie des données) échoue toutes les instructions faites depuis le début sont annulées (rollback).
+Ce design pattern peut répondre notamment à un problème de sauvegarde de données lors de modifications délicates, telles que dans une base de données : si une instruction (par exemple une modification des données) échoue toutes les instructions faites depuis le début seront annulées (rollback).
 On peut aussi retrouver l’utilité de ce patron dans les historiques de logiciels, par exemple Photoshop qui permet de revenir en arrière.
 
 Sa mise en œuvre reste assez simple (voir le diagramme avec explication ci-dessous).
-Le plus grand avantage de ce patron est de pouvoir encapsuler la commande permettant par la suite d’avoir un historique et une sauvegarde des différents états. 
+Le plus grand avantage de ce patron est de pouvoir encapsuler la commande, permettant par la suite d’avoir un historique des différents états. 
 Le désavantage de ce design pattern est la lisibilité, en effet plus on a de commandes plus on aura de fichiers. Par conséquent, la quantité de code va augmenter assez rapidement.
 
 
@@ -27,17 +27,17 @@ Cette classe pourra avoir une propriété de type file (FIFO) contenant les comm
 Elle pourra aussi avoir une pile (LIFO) permettant de garder un historique des commandes faites. 
 On pourra ainsi exécuter les commandes dans la file, ou bien annuler les commandes dans la pile.
 
--ICommand:
-L’interface “ICommand” correspond à l'encapsulation des commandes, cela permet de généraliser ces commandes.
+- ICommand:
+L’interface “ICommand” correspond à l'encapsulation des commandes, cela permet de généraliser ces dernières.
 
 - Command:
-Cette classe implémente ICommand, on peut avoir une multitude de commandes. Elle hérite de deux méthodes : “execute” et “unexecute”.
+Cette classe implémente ICommand. Elle hérite de deux méthodes : “execute” et “unexecute”. On pourra imaginer avoir plusieurs commandes.
 
 - Receiver:
-La classe “receiver” est la classe qui recevra la commande. C’est dans cette classe que l’action se déroulera.
+La classe “receiver” est la classe qui recevra la ou les commandes. C’est dans cette classe que l’action se déroulera.
 
 - Client:
-Cette classe appelle la classe Invoker, elle doit préalablement connaître le receveur ainsi que la/les commandes à exécuter.
+Cette classe appelle la classe Invoker. Elle doit préalablement connaître le receveur ainsi que la/les commandes à exécuter.
 
 ## Exemple
 
