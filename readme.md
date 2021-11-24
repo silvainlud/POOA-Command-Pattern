@@ -5,7 +5,7 @@
 ## Introduction
 
 Le design pattern Command fait partie de la catégorie des patterns de comportements.
-Tout d'abord il faut savoir q'un patron de comportement permet d’identifier les modèles de communications entre les objets.
+Tout d'abord il faut savoir qu'un patron de comportement permet d’identifier les modèles de communications entre les objets.
 
 Le patron de commande permet d’encapsuler les commandes afin de garder un historique et de revenir à une version antérieure. Cette encapsulation permet de réaliser deux actions
 - la première permettant d'exécuter la ou les commandes souhaitées
