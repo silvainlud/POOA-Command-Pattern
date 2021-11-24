@@ -14,10 +14,10 @@ Le patron de commande permet d’encapsuler les commandes afin de garder un hist
 Ce design pattern peut répondre notamment à un problème de sauvegarde de données lors de modifications délicates, telles que dans une base de données : si une instruction (par exemple une modification des données) échoue toutes les instructions faites depuis le début seront annulées (rollback).
 On peut aussi retrouver l’utilité de ce patron dans les historiques de logiciels, par exemple Photoshop qui permet de revenir en arrière.
 
-Ce deisgn pattern offre donc un système de journalisation des commandes et uen indépendance entre les commandes et leur éxécuteur.
+Ce patron de conception offre donc un système de journalisation des commandes et une indépendance entre les commandes et leur éxécuteur.
 
 Sa mise en œuvre reste assez simple (voir le diagramme avec explication ci-dessous).
-Le plus grand avantage de ce patron est de pouvoir encapsuler la commande, et par conséquent l'invoqueur sera indépendant des actions réalisées par la ou les  commandes.
+Le plus grand avantage de ce patron est de pouvoir encapsuler la commande, par conséquent l'invoqueur sera indépendant des actions réalisées par la ou les  commandes.
 Il facilite l'ajout de nouvelles commandes sans que cela entraîne des changements importants. 
 
 Le désavantage de ce design pattern est la lisibilité, en effet plus on a de commandes plus on aura de fichiers. Par conséquent, la quantité de code va augmenter assez rapidement.
