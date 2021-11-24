@@ -14,9 +14,12 @@ Le patron de commande permet d’encapsuler les commandes afin de garder un hist
 Ce design pattern peut répondre notamment à un problème de sauvegarde de données lors de modifications délicates, telles que dans une base de données : si une instruction (par exemple une modification des données) échoue toutes les instructions faites depuis le début seront annulées (rollback).
 On peut aussi retrouver l’utilité de ce patron dans les historiques de logiciels, par exemple Photoshop qui permet de revenir en arrière.
 
+Ce deisgn pattern offre donc un système de journalisation des commandes et uen indépendance entre les commandes et leur éxécuteur.
+
 Sa mise en œuvre reste assez simple (voir le diagramme avec explication ci-dessous).
-Le plus grand avantage de ce patron est de pouvoir encapsuler la commande, permettant par la suite d’avoir un historique des différents états. 
-On peut également facilement ajouter de nouvelles commandes sans que cela entraîne de changements importants. 
+Le plus grand avantage de ce patron est de pouvoir encapsuler la commande, et par conséquent l'invoqueur sera indépendant des actions réalisées par la ou les  commandes.
+Il facilite l'ajout de nouvelles commandes sans que cela entraîne des changements importants. 
+
 Le désavantage de ce design pattern est la lisibilité, en effet plus on a de commandes plus on aura de fichiers. Par conséquent, la quantité de code va augmenter assez rapidement.
 
 
@@ -24,7 +27,6 @@ Le désavantage de ce design pattern est la lisibilité, en effet plus on a de c
 
 ![](images/Schema%20Explication.png)
 
-Ce diagramme est composé de trois classes et une interface.
 - `Invoker`:
 L’invoker sera la classe qui invoquera la commande, pour ce fait elle aura besoin de connaître au préalable la cible (le receiver). 
 Cette classe pourra avoir une propriété de type file (FIFO) contenant les commandes qui ne sont pas encore exécutés. 
@@ -35,7 +37,7 @@ On pourra ainsi exécuter les commandes dans la file, ou bien annuler les comman
 L’interface `ICommand` correspond à l'encapsulation des commandes, cela permet de généraliser ces dernières.
 
 - `Command`:
-Cette classe implémente `ICommand`. Elle hérite de deux méthodes : `execute` et `unexecute`. On pourra imaginer avoir plusieurs commandes.
+Cette classe implémente `ICommand`. Elle hérite de deux méthodes : `execute` et `unexecute`. On pourra imaginer avoir plusieurs Commandes.
 
 - `Receiver`:
 La classe `Receiver` est la classe qui recevra la ou les commandes. C’est dans cette classe que l’action se déroulera.
